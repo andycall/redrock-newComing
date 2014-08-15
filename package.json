@@ -1,0 +1,25 @@
+{
+  "name": "RedRockTemplates",
+  "version": "0.0.1",
+  "description": "Build subject website faster",
+  "keywords": [
+    "documentation",
+    "dox"
+  ],
+  "author": "AndyCall",
+  "contributors": [
+    "AndyCall <dongtiangche@gmail.com> (https://github.com/dongtiangche)"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dongtiangche/Splash.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dongtiangche/issues"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-imagemin": "^0.7.1"
+  }
+}

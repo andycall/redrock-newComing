@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection"content="telephone=no, email=no" />
+
+    <link rel="stylesheet" href="css/normalize.min.css">
+    <link rel="stylesheet" href="css/style_mobile.css">
+
+</head>
+<body>
+
+<div class="container">
+    <!-- 登录框 -->
+    <div class="login">
+        <div class="wrapper">
+            <img class="close" src="img/close.png" alt="close"/>
+            <h1>新生登录</h1>
+            <hr/>
+            <p>登录之后才能进行查找</p>
+
+            <form action="" method="post" id="loginForm">
+                <section>
+                    <input type="text" name="username" class="username" placeholder="学号" /><span class="error">Error</span>
+                </section>
+                <section>
+                    <input type="password" name="password" class="password" placeholder="身份证后6位" /><span class="error">Error</span>
+                </section>
+
+                <input type="submit" name="submit" class="submit" value="登录">
+            </form>
+        </div>
+    </div>
+
+    <!-- loading 条-->
+    <div class="loading">
+        <img src="img/more_load.gif" alt="more_loading"/>
+    </div>
+    <!-- 迎新网 -->
+    <div class="head">
+        <h2>迎新网</h2>
+    </div>
+    <!-- 新生点击登录 -->
+    <div class="welcome">
+        <img src="img/head_bg.png" alt="head-bg"/>
+        <a class="new_login" href="#"><img class="newLogin" src="img/newLogin.png" alt="newLogin"/></a>
+    </div>
+    <!-- 开学那些事 -->
+    <div class="openDayThing">
+        <a class="unslider-arrow prev">Previous slide</a>
+
+        <div class="picSwap">
+            <ul>
+                <li><img src="img/openday.jpg" alt="openday"/></li>
+                <li><img src="img/openday.jpg" alt="openday"/></li>
+                <li><img src="img/openday.jpg" alt="openday"/></li>
+            </ul>
+        </div>
+        <a class="unslider-arrow next">Next slide</a>
+    </div>
+    <!--找朋友 -->
+    <div class="find_friends">
+        <ul>
+            <li>
+                <h1><img class="lazy" data-original="img/search_friend.png" alt="serach_friend"/>找朋友</h1>
+                <span href="" class="triangle"></span>
+                <ul class="find_detail">
+                    <li><a href="#">找同学</a></li>
+                    <li><a href="#">找老乡</a></li>
+                    <li><a href="#">找室友</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- 新生攻略 -->
+    <div class="newStudentsResolution list" id="newStudent">
+        <img class="lazy" data-original="img/newstudnet.png" alt="newStudent"/>
+        <div class="buttons">
+            <div class="now"><p>入学事宜</p></div>
+            <div><p>E彩鎏光</p></div>
+            <div><p>我的老师</p></div>
+        </div>
+        <ul>
+            <li>
+                <span>报道须知</span>
+                <a href="#" class="forMore">更多&gt;&gt;</a>
+                <p>独自一人来学校报道，好孤单，好寂寞。。。哥哥快来帮帮我~~~</p>
+            </li>
+            <li>
+                <span>安全须知</span>
+                <a href="#" class="forMore">更多&gt;&gt;</a>
+                <p>独自一人来学校报道，好孤单，好寂寞。。。哥哥快来帮帮我~~~</p>
+            </li>
+            <li>
+                <span>奖学金设置</span>
+                <a href="#" class="forMore">更多&gt;&gt;</a>
+                <p>独自一人来学校报道，好孤单，好寂寞。。。哥哥快来帮帮我~~~</p>
+            </li>
+        </ul>
+    </div>
+
+    <script type="text/x-jsrender" id="newStudentTemplate">
+        <img class="lazy" src="img/newstudnet.png" alt="newStudent"/>
+        <div class="buttons cqupt">
+            {{for buttons}}
+                 {{if now}}
+                    <div class="now"><p>{{>classify}}</p></div>
+                 {{else}}
+                    <div><p>{{>classify}}</p></div>
+                 {{/if}}
+            {{/for}}
+        </div>
+        <ul>
+            {{for sections}}
+                <li>
+                    <span>{{>notification}}</span>
+                    <a href="{{>formore}}" class="forMore">更多&gt;&gt;</a>
+                    <p>{{>statement}}</p>
+                </li>
+            {{/for}}
+        </ul>
+    </script>
+
+    <!-- 从这里开始使用Ajax -->
+<!--  -------------- 华丽的分割线 ---------------------------------   -->
+    <!-- 邮子风采 -->
+    <script type="text/x-jsrender" id="cquptStudentTemplate">
+        <img src="{{>logo}}" alt="demeanour"/>
+        <div class="buttons cqupt">
+            {{for buttons}}
+                 {{if now}}
+                    <div class="now"><p>{{>classify}}</p></div>
+                 {{else}}
+                    <div><p>{{>classify}}</p></div>
+                 {{/if}}
+            {{/for}}
+        </div>
+        {{include tmpl="#cquptStudentPicConainer"}}{{/include}}
+
+    </script>
+    <script type="text/x-jsrender" id="cquptStudentPicConainer">
+          <div class="picContainer">
+            {{for section}}
+                <div class="picSec">
+                    <img src="{{>src}}" alt="cqupt"/>
+                    <div class="picStatement">{{>institution}}</div>
+                </div>
+            {{/for}}
+        </div>
+    </script>
+    <script type="text/x-jsrender" id="cquptStudentChangeButton">
+        <div class="changeButton clearfix">
+            <div class="moveRight"><img src="{{>nextSrc}}" alt="next1"/></div>
+            <div class="moveLeft"><img src="{{>preSrc}}" alt="pre"/></div>
+        </div>
+    </script>
+
+    <!-- 学生组织 -->
+   <script id="studentOrganTemplate" type="text/x-jsrender">
+        <img src="{{>logo}}" alt="organ"/>
+        {{include tmpl="#studentOrganButtons"}}{{/include}}
+        {{include tmpl="#studentOranizations"}}{{/include}}
+   </script>
+   <script type="text/x-jsrender" id="studentOrganButtons">
+       <div class="buttons cqupt">
+            {{for buttons}}
+                {{if now}}
+                 <div class="now"><p>{{>classify}}</p></div>
+                {{else}}
+                    <div><p>{{>classify}}</p></div>
+                {{/if}}
+            {{/for}}
+       </div>
+   </script>
+    <script type="text/x-jsrender" id="studentOranizations">
+        <ul>
+            {{for section}}
+                <li><a>{{>organization}}</a></li>
+            {{/for}}
+        </ul>
+    </script>
+
+    <!-- 大声HI -->
+    <script type="text/x-jsrender" id="loudHiTemplate">
+        <img src="{{>logo}}" alt="HI"/>
+        <div class="buttons cqupt">
+            {{for buttons}}
+                {{if now}}
+                    <div class="now"><p>{{>classify}}</p></div>
+                {{else}}
+                    <div><p>{{>classify}}</p></div>
+                {{/if}}
+            {{/for}}
+        </div>
+        {{include tmpl="#loudHiPost" /}}
+    </script>
+
+    <script type="text/x-jsrender" id="loudHiPost">
+       <div class="post_container">
+            {{for section}}
+            <div class="post_sec">
+                <p>{{>content}}</p>
+                <div class="post_info clearfix">
+                    <img src="{{>loud}}" alt="loug"/>
+                    <div class="right_sec">
+                        <span>{{>date}}</span>
+                        <img src="{{>chat}}" alt="chat"/>
+                    </div>
+                </div>
+                {{if triangle=="left"}}
+                    <div class="triangle left"></div>
+                    <div class="triangle fake left"></div>
+                {{else}}
+                    <div class="triangle right"></div>
+                    <div class="triangle fake right"></div>
+                {{/if}}
+            </div>
+
+            {{/for}}
+        </div>
+    </script>
+
+    <!-- 关于我们 -->
+    <script type="text/text/x-jsrender" id="aboutUsTemplate">
+        <img src="{{>logo}}" alt="about_us"/>
+        <div class="buttons cqupt">
+            {{for buttons}}
+                {{if now}}
+                    <div class="now"><p>{{>classify}}</p></div>
+                {{else}}
+                <div><p>{{>classify}}</p></div>
+                {{/if}}
+            {{/for}}
+        </div>
+
+        {{include tmpl="#aboutUsContainer" /}}
+
+        <div class="aboutContent clearfix">
+            <p>{{>aboutContent}}</p>
+        </div>
+    </script>
+
+    <script type="text/text/x-jsrender" id="aboutUsContainer">
+        <div class="picContainer">
+            {{for section}}
+                <div class="picSec">
+                    <img src="{{>PicSrc}}" alt="cqupt"/>
+                    <div class="picStatement">{{>PicStatement}}</div>
+                </div>
+            {{/for}}
+        </div>
+    </script>
+
+    <!-- 红岩网校 -->
+    <script type="text/text/x-jsrender" id="Redrock">
+        <div class="info">
+            <a href="#">关于红岩网校</a> |
+            <a href="#">网站地图</a> |
+            <a href="#">指出错误</a> |
+            <a href="#">管理入口</a>
+        </div>
+        <p>本网站由红岩网校工作站负责开发，管理，不经红岩网校委员会书面同意不得进行转载</p>
+        <p>重庆市南岸区崇文路2号（重庆邮电大学内）400065</p>
+        <p>Email: redrock@cqupt.edu.cn (023-26461084)</p>
+    </script>
+
+
+
+</div>
+<noscript>
+卧槽。。竟然禁用了Javascript。。几百行Javascript代码都白写了。- -,这还看毛线- -
+</noscript>
+</body>
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/jquery.lazyload.js"></script>
+<script type="text/javascript" src="js/jsrender.min.js"></script>
+<script type="text/javascript" src="js/unslider.js"></script>
+<script type="text/javascript" src="js/ajaxQueue.js"></script>
+<script type="text/javascript" src="js/formAuth.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</html>
